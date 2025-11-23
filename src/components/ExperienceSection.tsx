@@ -1,7 +1,7 @@
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
 import { useRef, useState } from "react";
-import { ExternalLink, Calendar, Github, Code2, Layers, Cloud, CloudRain, Zap, GraduationCap } from "lucide-react";
+import { ExternalLink, Calendar, Github, Code2, Layers, Cloud, CloudRain, Zap, GraduationCap, LucideIcon } from "lucide-react";
 
 // --- DATA ---
 const education = [
@@ -46,22 +46,38 @@ const projects = [
   },
 ];
 
+// --- TYPES ---
+type Project = {
+  title: string;
+  description: string;
+  link: string;
+  tags: string[];
+  thumbnail: string | null;
+  techIcons: LucideIcon[];
+};
+
 // --- ANIMATION VARIANTS ---
-const descriptionVariants = {
+const descriptionVariants: Variants = {
   rest: {
     height: 0,
     opacity: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
   hover: {
     height: "auto",
     opacity: 1,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 // --- PROJECT CARD COMPONENT ---
-const ProjectCard = ({ project, index, isInView }) => {
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+  isInView: boolean;
+}
+
+const ProjectCard = ({ project, index, isInView }: ProjectCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -75,27 +91,26 @@ const ProjectCard = ({ project, index, isInView }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="relative bg-card/80 backdrop-blur-sm rounded-3xl burnt-edge shadow-[var(--shadow-paper)] hover:shadow-[var(--shadow-lifted)] transition-all duration-700 group overflow-hidden border border-border/20 hover:border-accent/30 flex flex-col w-full max-w-[400px] h-full"
+      className="relative bg-card/80 backdrop-blur-sm rounded-3xl burnt-edge shadow-[var(--shadow-paper)] hover:shadow-[var(--shadow-lifted)] transition-all duration-700 overflow-hidden border border-border/20 hover:border-accent/30 flex flex-col w-full max-w-[400px]"
     >
       <div className="relative h-48 bg-gradient-to-br from-accent/10 via-primary/5 to-accent/10 overflow-hidden flex-shrink-0">
         {project.thumbnail && (
           <img 
             src={project.thumbnail} 
             alt={project.title}
-            className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-300"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-80'}`}
           />
         )}
-        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
-         {/* Decorative elements restored */}
+        <div className={`absolute inset-0 transition-colors duration-300 ${isHovered ? 'bg-black/10' : 'bg-black/20'}`} />
       </div>
 
-      <div className="p-6 flex flex-col flex-1">
-        <h4 className="font-heading text-2xl mb-3 group-hover:text-accent transition-colors duration-500">
+      <div className="p-6 flex flex-col">
+        <h4 className={`font-heading text-2xl mb-3 transition-colors duration-500 ${isHovered ? 'text-accent' : ''}`}>
           {project.title}
         </h4>
         
         <motion.div
-          className="overflow-hidden"
+          className="overflow-hidden h-0"
           initial={false}
           animate={isHovered ? "hover" : "rest"}
           variants={descriptionVariants}
@@ -194,7 +209,7 @@ export const ExperienceSection = () => {
 
           <div>
             <h3 className="font-heading text-3xl mb-8 text-primary">Notable Works</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
               {projects.map((project, index) => (
                 <ProjectCard key={project.title} project={project} index={index} isInView={isInView} />
               ))}
