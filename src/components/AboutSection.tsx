@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import keer from "@/assets/keer.jpg";
-import contentBg from "@/assets/Content4.png";
+import contentBg from "@/assets/Content3.png";
 import designImg from "@/assets/design.png";
 import resume from "@/assets/resume.png";
 import { Button } from "./ui/button";

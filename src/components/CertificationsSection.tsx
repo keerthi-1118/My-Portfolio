@@ -26,9 +26,9 @@ const certifications: Certificate[] = [
     date: "Dated this year 2025",
   },
   {
-    issuer: "HackerRank",
-    title: "Problem Solving (Advanced)",
-    description: "Achieved an advanced rating in competitive programming, solving complex algorithmic challenges.",
+    issuer: "Redhat",
+    title: "Redhat system administrator ",
+    description: "Achieved the Red Hat System Administration I & II (RH124 – RHA) and (RH134 – RHA) – Ver. 9.3",
     date: "Dated this year 2025",
   },
 ];
