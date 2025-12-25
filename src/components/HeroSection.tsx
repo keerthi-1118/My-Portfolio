@@ -1,5 +1,5 @@
 
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 import videoSrc from "../assets/final_quill.mp4";
 
@@ -26,13 +26,6 @@ export const HeroSection = () => {
     // }
     // }
   }, [isInView]); // This effect runs whenever isInView changes.
-
-  const handleVideoEnd = () => {
-    // Pause the video when it ends.
-    // if (videoRef.current) {
-    //   videoRef.current.pause();
-    // }
-  };
 
   return (
     <section
