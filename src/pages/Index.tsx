@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/Navigation";
 import { HeroSection } from "@/components/HeroSection";
-import {AboutSection} from "@/components/AboutSection";
-import {ExperienceSection} from "@/components/ExperienceSection";
+import { AboutSection } from "@/components/AboutSection";
+import { ExperienceSection } from "@/components/ExperienceSection";
 import { SkillsSection } from "@/components/SkillsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -14,12 +14,12 @@ const Index = () => {
     <div className="bg-background">
       <Navigation />
       <main>
-        <div className="relative z-10">
+        <div className="relative z-20">
           <HeroSection />
         </div>
 
         {/* The rest of the page with the parchment texture */}
-        <div 
+        <div
           className="relative -mt-24"
           style={{
             backgroundImage: `url(${parchmentTextureT}), url(${parchmentTextureB}), url(${parchmentTextureM})`,
@@ -31,7 +31,7 @@ const Index = () => {
         >
           {/* Overlay for better text readability on parchment */}
           <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] pointer-events-none" />
-          
+
           {/* Content */}
           <div className="relative z-10 pt-24">
             <AboutSection />
