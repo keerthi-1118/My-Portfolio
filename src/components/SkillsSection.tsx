@@ -131,12 +131,12 @@ const skillCategories: SkillCategory[] = [
   {
     category: "Developer Tools",
     skills: ["Git", "VS Code", "Google Colab", "Power BI", "Excel", "Google Sheets","Docker"],
-    icon: "🛠",
+    icon: "⚙️",
   },
   {
     category: "Databases",
     skills: ["MongoDB", "MySQL","PHP"],
-    icon: "🗄",
+    icon: "🛢️",
   },
   {
     category: "Concepts",
