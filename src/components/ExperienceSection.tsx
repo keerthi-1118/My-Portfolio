@@ -39,7 +39,7 @@ const projects = [
   {
     title: "EduSpace",
     description: "Currently developing EduSpace, an AI-powered space for students to upload notes, organize projects, and work together in real time.",
-    link: "https://github.com/keerthi-1118",
+    link: "https://github.com/keerthi-1118/Eduspace/tree/master/Downloads/notes",
     thumbnail:"/images/edu.png",
     tags: ["React", "Flask", "JWT", "Docker", "Material UI"],
     techIcons: [Code2, Layers, Zap]
