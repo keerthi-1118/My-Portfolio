@@ -43,7 +43,7 @@ export const Navigation = () => {
   };
 
   return (
-    <>
+    <div className="overflow-x-hidden">
       {/* Desktop Navigation */}
       <motion.nav
         initial={{ y: -100 }}
@@ -148,6 +148,6 @@ export const Navigation = () => {
           />
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
