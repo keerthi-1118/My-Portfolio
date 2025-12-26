@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Burnt Letter Theme - Parchment & Vintage */
+    --background: 42 60% 85%;  /* Light parchment tan #F5E5C0 */
+    --foreground: 0 13% 21%;   /* Dark brown #3B2F2F */
+
+    --card: 42 55% 88%;
+    --card-foreground: 0 13% 21%;
+
+    --popover: 42 60% 85%;
+    --popover-foreground: 0 13% 21%;
+
+    --primary: 30 68% 26%;     /* Sepia shadow #704214 */
+    --primary-foreground: 42 60% 85%;
+
+    --secondary: 20 33% 40%;   /* Burnt edges #8A5A44 */
+    --secondary-foreground: 42 60% 85%;
+
+    --muted: 30 23% 71%;       /* Ash gray #C8B6A6 */
+    --muted-foreground: 0 13% 35%;
+
+    --accent: 45 68% 53%;      /* Warm gold #D4AF37 */
+    --accent-foreground: 0 13% 21%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 42 60% 85%;
+
+    --border: 30 25% 65%;
+    --input: 30 25% 70%;
+    --ring: 45 68% 53%;
+
+    --radius: 0.5rem;
+
+    /* Custom theme colors */
+    --burnt-edge: 20 33% 40%;
+    --candle-glow: 45 100% 70%;
+    --ink: 0 13% 21%;
+    --wax-seal: 0 65% 45%;
+    --parchment-light: 42 65% 90%;
+    --parchment-dark: 35 40% 75%;
+    
+    /* Gradients */
+    --gradient-candle: radial-gradient(circle at 10% 20%, hsl(45 100% 70% / 0.3), transparent 40%);
+    --gradient-burnt: linear-gradient(135deg, hsl(20 33% 40% / 0.1), hsl(30 68% 26% / 0.2));
+    
+    /* Shadows */
+    --shadow-paper: 0 4px 20px hsl(30 68% 26% / 0.15);
+    --shadow-lifted: 0 10px 40px hsl(30 68% 26% / 0.25);
+    --shadow-glow: 0 0 30px hsl(45 100% 70% / 0.4);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    --sidebar-background: 42 55% 88%;
+    --sidebar-foreground: 0 13% 21%;
+    --sidebar-primary: 30 68% 26%;
+    --sidebar-primary-foreground: 42 60% 85%;
+    --sidebar-accent: 30 23% 71%;
+    --sidebar-accent-foreground: 0 13% 21%;
+    --sidebar-border: 30 25% 65%;
+    --sidebar-ring: 45 68% 53%;
+  }
+
+  .dark {
+    /* Candlelight Dark Mode - Black parchment with glowing gold */
+    --background: 0 0% 8%;
+    --foreground: 45 68% 53%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 45 68% 53%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 45 68% 53%;
+
+    --primary: 45 68% 53%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 20 33% 25%;
+    --secondary-foreground: 45 68% 53%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 30 23% 60%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 0 0% 8%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 45 68% 53%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 45 68% 53%;
+    
+    --burnt-edge: 20 33% 20%;
+    --candle-glow: 45 100% 60%;
+    --ink: 45 68% 53%;
+    --wax-seal: 0 65% 35%;
+    --parchment-light: 0 0% 15%;
+    --parchment-dark: 0 0% 10%;
+    
+    --gradient-candle: radial-gradient(circle at 10% 20%, hsl(45 100% 60% / 0.4), transparent 40%);
+    --shadow-glow: 0 0 40px hsl(45 100% 60% / 0.5);
+    
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 45 68% 53%;
+    --sidebar-primary: 45 68% 53%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 20%;
+    --sidebar-accent-foreground: 45 68% 53%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 45 68% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-body {
+    font-family: 'Lora', serif;
+  }
+  
+  .font-signature {
+    font-family: 'Great Vibes', cursive;
+  }
+  
+  .text-shadow-soft {
+    text-shadow: 2px 2px 8px hsl(var(--primary) / 0.2);
+  }
+  
+  .candle-glow {
+    position: relative;
+  }
+  
+  .candle-glow::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 30%;
+    height: 60%;
+    background: radial-gradient(circle, hsl(var(--candle-glow) / 0.3), transparent 70%);
+    pointer-events: none;
+    animation: flicker 3s ease-in-out infinite;
+  }
+  
+  .burnt-edge {
+    position: relative;
+    border-radius: 2px;
+  }
+  
+  .burnt-edge::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 2px;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+      hsl(var(--burnt-edge) / 0.3), 
+      hsl(var(--primary) / 0.2),
+      hsl(var(--burnt-edge) / 0.3));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  
+  .paper-texture {
+    background-image: 
+      url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' /%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 0.03 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23paper)'/%3E%3C/svg%3E");
+  }
+  
+  .ink-text {
+    background: linear-gradient(180deg, hsl(var(--foreground)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .certificate-image-card {
+    @apply rounded-lg shadow-[var(--shadow-paper)] transition-all duration-300 hover:shadow-[var(--shadow-lifted)] bg-cover bg-center bg-no-repeat h-[320px] w-[460px] ;
+  }
+
+  .certificate-image-content {
+    @apply p-12 flex flex-col h-full;
+  }
+}
