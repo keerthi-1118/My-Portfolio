@@ -6,16 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-<<<<<<< HEAD
 import emailjs from "@emailjs/browser";
-=======
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
 
 export const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-<<<<<<< HEAD
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -55,19 +51,6 @@ export const ContactSection = () => {
     } finally {
       setIsSubmitting(false);
     }
-=======
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Message sent! I'll get back to you soon.");
-      setIsSubmitting(false);
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
   };
 
   const socialLinks = [
@@ -151,11 +134,7 @@ export const ContactSection = () => {
             </motion.p>
 
             {/* Contact Form */}
-<<<<<<< HEAD
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6 mb-8">
-=======
-            <form onSubmit={handleSubmit} className="space-y-6 mb-8">
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
               <motion.div 
                 className="grid md:grid-cols-2 gap-6"
                 initial={{ opacity: 0, y: 30 }}
@@ -180,12 +159,8 @@ export const ContactSection = () => {
                   </label>
                   <Input
                     id="name"
-<<<<<<< HEAD
                     name="from_name"
                     placeholder="Ms/Mr"
-=======
-                    placeholder="John Doe"
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
                     required
                     className="bg-background/50 border-border focus:border-accent transition-all duration-500 hover:border-accent/50 hover:shadow-sm focus:scale-[1.01]"
                   />
@@ -204,14 +179,9 @@ export const ContactSection = () => {
                   </label>
                   <Input
                     id="email"
-<<<<<<< HEAD
                     name="from_email"
                     type="email"
                     placeholder="@example.com"
-=======
-                    type="email"
-                    placeholder="john@example.com"
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
                     required
                     className="bg-background/50 border-border focus:border-accent transition-all duration-500 hover:border-accent/50 hover:shadow-sm focus:scale-[1.01]"
                   />
@@ -232,10 +202,7 @@ export const ContactSection = () => {
                 </label>
                 <Textarea
                   id="message"
-<<<<<<< HEAD
                   name="message"
-=======
->>>>>>> 8fc78edadb0d9829091b4a5d623c65c2d5fbc792
                   placeholder="Tell me about your project or idea..."
                   required
                   rows={6}
