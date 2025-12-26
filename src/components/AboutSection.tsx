@@ -36,14 +36,14 @@ export const AboutSection = () => {
             The Writer
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-24 items-center">
-            <div className="flex flex-col items-center gap-28">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="flex flex-col items-center gap-12 md:gap-28">
               {/* Portrait - Circular */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.4, duration: 1, ease: "easeOut" }}
-                className="relative mx-auto w-72 h-72"
+                className="relative mx-auto w-60 h-60 md:w-72 md:h-72"
               >
                 <motion.div
                   className="w-full h-full rounded-full overflow-hidden relative"
@@ -81,12 +81,12 @@ export const AboutSection = () => {
                 
                 {/* Decorative rings */}
                 <motion.div
-                  className="absolute -top-4 -right-4 w-20 h-20 border-4 border-accent rounded-full opacity-50"
+                  className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-16 h-16 md:w-20 md:h-20 border-4 border-accent rounded-full opacity-50"
                   whileHover={{ scale: 1.15, rotate: 90 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 />
                 <motion.div
-                  className="absolute -bottom-4 -left-4 w-16 h-16 border-4 border-secondary rounded-full opacity-40"
+                  className="absolute -bottom-2 -left-2 md:-bottom-4 md:-left-4 w-12 h-12 md:w-16 md:h-16 border-4 border-secondary rounded-full opacity-40"
                   whileHover={{ scale: 1.15, rotate: -90 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 />
@@ -94,7 +94,7 @@ export const AboutSection = () => {
 
               {/* Action Buttons */}
               <motion.div
-                className="flex gap-4 justify-center pr-24"
+                className="flex gap-4 justify-center"
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.9, duration: 0.8 }}
@@ -124,20 +124,20 @@ export const AboutSection = () => {
                 <img
                   src={contentBg}
                   alt="Scroll background"
-                  className="w-[120%] h-auto"
+                  className="w-full h-auto"
                 />
-                <div className="absolute inset-0 flex flex-col justify-center items-center">
-                  <div className="w-3/4 text-center">
-                    <p className="font-body text-base md:text-lg leading-relaxed mb-8 text-[#FEFEDA] font-semibold">
+                <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
+                  <div className="w-full md:w-3/4 text-center">
+                    <p className="font-body text-sm md:text-lg leading-relaxed mb-4 md:mb-8 text-[#FEFEDA] font-semibold">
                     Full-stack development enthusiast with a secondary focus in finance, currently pursuing B.Tech CSE(3rd year) at SRM University–AP.     I explore AI/ML, IoT, and DevOps with a curiosity-driven approach, focusing on building simple, meaningful, and user-centered solutions.
                     </p>
-                    <p className="font-body text-base md:text-lg leading-relaxed text-[#FEFEDA] font-semibold">
+                    <p className="font-body text-sm md:text-lg leading-relaxed text-[#FEFEDA] font-semibold">
                     I bring adaptability, continuous learning, and clarity to every project, aiming to create   
                      work that is practical and impactful.
                     </p>
                   </div>
                   <motion.div
-                    className="w-2/5 mt-3"
+                    className="w-1/2 md:w-2/5 mt-3"
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 1, duration: 1 }}

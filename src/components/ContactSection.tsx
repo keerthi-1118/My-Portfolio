@@ -31,7 +31,7 @@ export const ContactSection = () => {
   ];
 
   return (
-    <section id="contact" ref={ref} className="min-h-screen flex items-center py-20 relative">
+    <section id="contact" ref={ref} className="min-h-screen flex items-center py-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -74,7 +74,7 @@ export const ContactSection = () => {
               damping: 20,
               mass: 1.2
             }}
-            className="bg-card/80 backdrop-blur-sm p-8 md:p-12 rounded-3xl burnt-edge shadow-[var(--shadow-paper)] mb-12 relative overflow-hidden"
+            className="bg-card/80 backdrop-blur-sm p-6 sm:p-8 md:p-12 rounded-3xl burnt-edge shadow-[var(--shadow-paper)] mb-12 relative overflow-hidden"
             style={{
               border: '1.5px solid hsl(var(--border) / 0.2)',
               boxShadow: `

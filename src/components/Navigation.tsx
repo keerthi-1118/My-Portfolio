@@ -59,7 +59,7 @@ export const Navigation = () => {
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="font-signature text-3xl text-accent cursor-pointer"
+              className="font-signature text-2xl sm:text-3xl text-accent cursor-pointer"
               onClick={() => handleClick("#hero")}
             >Keerthi's Portfolio
             </motion.div>
