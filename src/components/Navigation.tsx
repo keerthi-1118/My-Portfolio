@@ -37,6 +37,18 @@ export const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleClick = (href: string) => {
     setIsOpen(false);
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
@@ -90,49 +102,60 @@ export const Navigation = () => {
                 </motion.button>
               ))}
             </div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 rounded-lg bg-card hover:bg-accent/20 transition-colors duration-300"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </motion.button>
           </div>
         </div>
       </motion.nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25 }}
-            className="fixed top-0 right-0 bottom-0 w-64 bg-card/95 backdrop-blur-md shadow-[var(--shadow-lifted)] z-40 md:hidden burnt-edge"
-          >
-            <div className="flex flex-col gap-2 p-8 pt-24">
-              {navItems.map((item, index) => (
+          <>
+            <motion.div
+              initial={{ opacity: 0, x: "100%" }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 400, duration: 0.3 }}
+              className="fixed inset-y-0 right-0 w-64 bg-card/95 backdrop-blur-md shadow-[var(--shadow-lifted)] z-[60] md:hidden burnt-edge"
+              style={{ 
+                willChange: "transform",
+                top: 0,
+                bottom: 0,
+                height: "100vh",
+                maxHeight: "100vh",
+                overflowY: "auto"
+              }}
+            >
+              {/* Close button at top of menu */}
+              <div className="flex justify-end p-4 sticky top-0 bg-card/95 backdrop-blur-sm z-10">
                 <motion.button
-                  key={item.href}
-                  onClick={() => handleClick(item.href)}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`font-body text-lg text-left py-3 px-4 rounded-lg transition-colors duration-300 ${
-                    activeSection === item.href.substring(1)
-                      ? "bg-accent/20 text-accent"
-                      : "text-foreground hover:bg-accent/10 hover:text-accent"
-                  }`}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setIsOpen(false)}
+                  className="p-2 rounded-lg bg-card hover:bg-accent/20 transition-colors duration-300"
+                  aria-label="Close menu"
                 >
-                  {item.label}
+                  <X className="w-6 h-6" />
                 </motion.button>
-              ))}
-            </div>
-          </motion.div>
+              </div>
+              <div className="flex flex-col gap-2 p-8 pt-4">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.href}
+                    onClick={() => handleClick(item.href)}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    className={`font-body text-lg text-left py-3 px-4 rounded-lg transition-colors duration-300 ${
+                      activeSection === item.href.substring(1)
+                        ? "bg-accent/20 text-accent"
+                        : "text-foreground hover:bg-accent/10 hover:text-accent"
+                    }`}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
@@ -143,8 +166,10 @@ export const Navigation = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-30 md:hidden"
+            className="fixed inset-0 bg-background/60 backdrop-blur-sm z-[55] md:hidden"
+            style={{ top: 0, left: 0, right: 0, bottom: 0, width: "100%", height: "100%" }}
           />
         )}
       </AnimatePresence>

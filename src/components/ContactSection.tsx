@@ -181,7 +181,7 @@ export const ContactSection = () => {
                     id="email"
                     name="from_email"
                     type="email"
-                    placeholder="@example.com"
+                    placeholder="example123@gmail.com"
                     required
                     className="bg-background/50 border-border focus:border-accent transition-all duration-500 hover:border-accent/50 hover:shadow-sm focus:scale-[1.01]"
                   />
